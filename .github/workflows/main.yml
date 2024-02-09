@@ -1,13 +1,10 @@
 name: Python Application Build and Package
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
@@ -18,16 +15,23 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install dependencies
-        run: pip install -r x_img/requirements.txt
+      - name: Create and activate virtual environment
+        run: |
+          python -m venv venv
+          .\venv\Scripts\activate
+
+      - name: Upgrade pip
+        run: |
+          .\venv\Scripts\activate
+          python -m pip install --upgrade pip
 
       - name: Build executable with PyInstaller
         run: |
-          cd x_img
-          pyinstaller --onefile --windowed --add-data "user_credentials.json:." --add-data "logo_tgx.png:." tg_img_tool.py
+          .\venv\Scripts\activate
+          pyinstaller --onefile --windowed --add-data "user_credentials.json;." --add-data "logo_tgx.png;." tg_img_fast_solution.py
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: windows-executable
-          path: x_img/dist/*.exe
+          path: dist/*.exe
