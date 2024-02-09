@@ -15,19 +15,12 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Create and activate virtual environment
+      - name: Install PyInstaller
         run: |
-          python -m venv venv
-          .\venv\Scripts\activate
-
-      - name: Upgrade pip
-        run: |
-          .\venv\Scripts\activate
-          python -m pip install --upgrade pip
+          python -m pip install pyinstaller
 
       - name: Build executable with PyInstaller
         run: |
-          .\venv\Scripts\activate
           pyinstaller --onefile --windowed --add-data "user_credentials.json;." --add-data "logo_tgx.png;." tg_img_fast_solution.py
 
       - name: Upload Artifacts
