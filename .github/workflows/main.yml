@@ -22,7 +22,7 @@ jobs:
       - name: Build executable with PyInstaller
         run: |
           cd /Users/kostjax/Documents/3_Work/X/x_img
-          pyinstaller --onefile --windowed --add-data "user_credentials.json;." --add-data "logo_tgx.png;." .tg_img_fast_solution.py
+          pyinstaller --onefile --windowed --add-data "user_credentials.json;." --add-data "logo_tgx.png;." tg_img_tool.py
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
