@@ -21,7 +21,7 @@ jobs:
 
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller --onefile --windowed --add-data "/Users/kostjax/Documents/3_Work/X/x_img/user_credentials.json;." --add-data "/Users/kostjax/Documents/3_Work/X/x_img/logo_tgx.png;." /Users/kostjax/Documents/3_Work/X/x_img/tg_img_fast_solution.py
+          pyinstaller --onefile --windowed --add-data "/Users/kostjax/Documents/3_Work/X/x_img/user_credentials.json;." --add-data "/Users/kostjax/Documents/3_Work/X/x_img/logo_tgx.png;." /Users/kostjax/Documents/3_Work/X/x_img/tg_img_tool.py
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
