@@ -26,7 +26,7 @@ def adjust_image_size(directory):
                     new_size = max(width, height, 800)
                     new_img = Image.new("RGB", (new_size, new_size), "white")
                     new_img.paste(img, ((new_size - width) // 2, (new_size - height) // 2))
-                    new_img.save(output_path, "JPEG", quality=95)
+                    new_img.save(output_path, "JPEG", quality=100, subsampling=0)
                 processed_files += 1
             except Exception as e:
                 messagebox.showerror("Fehler", f"Ein Fehler ist aufgetreten: {e}")
